@@ -1,113 +1,257 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-body {
-    margin: 0;
-    font-family: Verdana, sans-serif;
-    background-color:black;
-    color:white
-}
-.header {
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  width: 100%;
-  background-color:black;
-}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ctoagn</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #0e0e0e;
+      --card-color: #1f1f1f;
+      --text-color: #fff;
+      --accent: #00ffbb;
+    }
 
-.header h2 {
-  text-align: center;
-}
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-.progress-container {
-  width: 100%;
-  height: 8px;
-  background: #000000;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      padding-top: 60px;
+      max-width: 100%;
+      overflow-x: hidden;
+    }
 
-.progress-bar {
-  height: 8px;
-  background: #ffffff;
-  width: 0%;
-}
+    .header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 10;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(8px);
+    }
 
-.content {
-  padding: 30px 0;
-  margin: 10px auto 0 auto;
-  width: 80%;
-}
-details[open] summary ~ * {
+    .progress-bar {
+      height: 6px;
+      background: var(--accent);
+      width: 0%;
+      transition: width 0.1s ease-in-out;
+    }
+
+    .content {
+      max-width: 800px;
+      margin: auto;
+      padding: 2rem;
+    }
+
+    h1, h2, h3 {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
+
+    details {
+      margin: 1.5rem 0;
+      background: var(--card-color);
+      padding: 1rem;
+      border-radius: 8px;
+    }
+
+    summary {
+      font-size: 1.2rem;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      margin-left: 8px;
+    }
+
+    .contact-links img {
+      vertical-align: middle;
+      margin-right: 10px;
+    }
+    details[open] summary ~ * {
   animation: sweep .5s ease-in-out;
-}
+    }
 
+    .vid {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 2rem;
+      padding: 1.5rem 0;
+      scroll-padding: 1rem;
+    }
+
+    .video-item {
+      scroll-snap-align: start;
+      flex: 0 0 auto;
+      width: 300px;
+      background: var(--card-color);
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .video-item iframe {
+      width: 100%;
+      height: 170px;
+      border-radius: 10px;
+    }
+
+    .log-entry {
+      background: var(--card-color);
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1.5rem;
+    }
+
+    .log-entry h3 {
+      margin: 0.5rem 0;
+      font-weight: normal;
+      text-align: right;
+      font-size: 1rem;
+    }
+
+    .scroll-banner {
+      background: #0e0e0e;
+      padding: 0.8rem;
+      text-align: center;
+      font-style: italic;
+      color: #aaa;
+      animation: scrollBanner 20s linear infinite;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    @keyframes scrollBanner {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+
+    }
 @keyframes sweep {
   0%    {opacity: 0; margin-left: -10px}
   100%  {opacity: 1; margin-left: 0px}
 }
-</style>
+
+    ::-webkit-scrollbar {
+      height: 8px;
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
+    }
+
+    @media (max-width: 600px) {
+      .vid {
+        gap: 1rem;
+      }
+
+      .video-item {
+        width: 90vw;
+      }
+
+      .content {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
-<div class="header">
-      <div class="progress-bar" id="myBar"></div>
-  
-</div>
 
-<div class="content">
-<h1 style="text-align: center;">&ltcant think of a good name&gt</h1>
-<p>finding out how hard is it to make a webpage</p>
-</br>
+  <div class="header">
+    <div class="progress-bar" id="progress"></div>
+  </div>
 
-<details>
-<hr style= "background-color: #ffffff;border-radius: 3px; border:solid">
-<summary style="font-size: 22px;">find me:</summary>
-<img src="instalogo.png" alt="insta" width="25" height="25">
-<a href="https://www.instagram.com/duck_sh_" target="_blank" style="color: white; text-decoration: none; font-size:22px;" >duck_sh_</a>
-</br>
-<img src="githublogo.png" alt="github" width="25" height="25">
-<a href="https://github.com/Daksh2k5" target="_blank" style="color: white; text-decoration: none; font-size:22px;" >Daksh2k5</a>
-</br>
-<img src="youtubelogo.png" alt="youtube" width="25" height="25">
-<a href="https://www.youtube.com/channel/UCKvMU_jATKHi3raqGovIi5Q" target="_blank" style="color: white; text-decoration: none; font-size:22px;">@ducksh</a>
-</br>
-<img src="discordlogo.png" alt="discord" width="25" height="25">
-<a href="https://discordapp.com/users/591132168483242014" target="_blank" style="color: white; text-decoration: none; font-size:22px;">ducksh</a>
-</details>
-<hr style="border: solid; background-color: #ffffff;border-radius: 3px;">
-</details>
-<marquee>why do all old websites use this scrolling effect?</marquee>
-</br></br>
+  <div class="content">
+    <h1>&lt;cant think of a good name&gt;</h1>
+    <p style="text-align:center;">finding out how hard is it to make a webpage</p>
 
-<h2 >video background attempt 1</h2>
-  <h3 style=" text-align: right;">22-7-23</h3>
-</br>
-<p style="font-size: 18px;line-height: 120%;">
-tried to add a video background that has parallax effect in the background
-</br> nhi hua
-</p>
-  <hr style= "background-color: #ffffff;border-radius: 3px; border:ridge">
-</br>
+    <div class="scroll-banner">why do all old websites use this scrolling effect?</div>
 
-  <h2 >ok cool now what?</h2>
-  <h3 style=" text-align: right;">14-7-23</h3>
-</br>
-<p style="font-size: 18px;line-height: 120%;">I've been working on making this website since yesterday but somehow it never occured to me that i dont have any use for this yet.</br>
-   Now that the basic site is up, im realising that i dont have much to really put here.</br>
-  I'll have to decide what I'll use this for. Maybe a blog? a resume? a practicing ground? all of it?</br>
-  Hopefully i'll stay motivated to update this regularly.</br> I dont even know where to go from here. I wanted to make a very basic site, I've achieved that already, now what?
-</p>
-  <hr style= "background-color: #ffffff;border-radius: 3px; border:ridge">
+    <details>
+      <summary>Find me</summary>
+      <div class="contact-links">
+        <p><img src="instalogo.png" width="25"> <a href="https://www.instagram.com/duck_sh_" target="_blank">duck_sh_</a></p>
+        <p><img src="githublogo.png" width="25"> <a href="https://github.com/Daksh2k5" target="_blank">Daksh2k5</a></p>
+        <p><img src="youtubelogo.png" width="25"> <a href="https://www.youtube.com/channel/UCKvMU_jATKHi3raqGovIi5Q" target="_blank">@ducksh</a></p>
+        <p><img src="discordlogo.png" width="25"> <a href="https://discordapp.com/users/591132168483242014" target="_blank">ducksh</a></p>
+      </div>
+    </details>
 
+    <h2>video suggestions (by my friends):</h2>
+    <p style="text-align:center;">
+      <a href="https://forms.gle/WTnVpNwqXsGEwESu8" target="_blank">add your own</a>
+    </p>
 
-<h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
-<h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
-<h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
-<h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
-<h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
-<h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
-<h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
-<h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
+    <div class="vid">
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/22GN93fOd4s?si=Ildjj5JT7xdOTQ3k" allowfullscreen></iframe>
+        <p><strong>by Daksh</strong></p>
+        <small>a tribute to the good side of the internet</small>
+      </div>
+
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/2Rxdmx8AL0s?si=w9y78Os5s4cIE6yl" allowfullscreen></iframe>
+        <p><strong>by Vidhee</strong></p>
+      </div>
+
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/wF-DeDqdShg?si=yTljaU5ciu1pzBOk" allowfullscreen></iframe>
+        <p><strong>by Dhruv</strong></p>
+        <small>NO HINTHI NO NOTHING AA<br>What ra sudeep🧐</small>
+      </div>
+
+      <div class="video-item">
+        <iframe src="https://www.youtube.com/embed/J8x-xoDeJsQ?si=V6r4W-xgERlf_Pps" allowfullscreen></iframe>
+        <p><strong>by Niharika</strong></p>
+        <small>*TING*</small>
+      </div>
+    </div>
+    <br><br><br><br><br><br>
+
+    <h1>log:</h1>
+
+    <div class="log-entry">
+      <h2>major UI overhaul</h2>
+      <h3>14-7-25</h3>
+      <p>changed almost the entire UI, looks neater now. Also using proper styling now so that expansion is easier</p>
+    </div>
+
+    <div class="log-entry">
+      <h2>video recommends w friends</h2>
+      <h3>09-7-25</h3>
+      <p>adding a section that allows friends to add YouTube video suggestions. For now, I’ll manually add them, but I hope to automate this someday.</p>
+    </div>
+
+    <div class="log-entry">
+      <h2>video background attempt 1</h2>
+      <h3>22-7-23</h3>
+      <p>Tried to add a video background with a parallax effect. <br>nhi hua</p>
+    </div>
+
+    <div class="log-entry">
+      <h2>ok cool now what?</h2>
+      <h3>14-7-23</h3>
+      <p>I’ve been working on this site but now I’m wondering what I’ll actually use it for. Maybe a blog? Resume? Just practice? Hopefully, I’ll stay motivated and update it regularly.</p>
+    </div>
+  </div><br><br><br>
+
+  <h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
 <h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
 <h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
 <h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
@@ -121,22 +265,13 @@ tried to add a video background that has parallax effect in the background
 <h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
 <h3 style="color: rgb(69, 69, 69);">TEXT TO ARTIFICIALLY INCREASE PAGE LENGTH TO DEMONSTRATE SCROLL PROGRESS BAR</h3>
 
-
-</div>
-
-<script>
-window.onscroll = function() {myFunction()};
-
-function myFunction() {
-  var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
-  var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-  var scrolled = (winScroll / height) * 100;
-  document.getElementById("myBar").style.width = scrolled + "%";
-}
-</script>
-
-</body>
-</html> 
-
+  <script>
+    window.onscroll = function () {
+      const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+      const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrolled = (winScroll / height) * 100;
+      document.getElementById("progress").style.width = scrolled + "%";
+    };
+  </script>
 </body>
 </html>
